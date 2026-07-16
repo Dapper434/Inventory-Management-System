@@ -61,3 +61,36 @@ def add_item():
     # save item
     inventory.append(new_item)
     return jsonify(new_item), 201
+
+   
+@app.route('/inventory/<int:item_id>', methods=['PATCH'])
+def update_item(item_id):
+    data = request.json
+    
+    # find the item and update only the fields provided
+    for item in inventory:
+        if item.get("id") == item_id:
+            if "name" in data:
+                item["name"] = data["name"]
+            if "price" in data:
+                item["price"] = data["price"]
+            if "stock" in data:
+                item["stock"] = data["stock"]
+            return jsonify(item), 200
+            
+    return jsonify({"error": "Not found"}), 404
+
+@app.route('/inventory/<int:item_id>', methods=['DELETE'])
+def delete_item(item_id):
+    global inventory
+    
+    for item in inventory:
+        if item.get("id") == item_id:
+            inventory.remove(item)
+            return jsonify({"message": "Deleted"}), 200
+            
+    return jsonify({"error": "Not found"}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
+ 
