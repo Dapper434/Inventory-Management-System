@@ -57,3 +57,19 @@ button:hover {
 .delete-btn:hover {
   background-color: #c0392b;
 }
+
+
+.item-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-details p {
+  margin: 5px 0;
+}
