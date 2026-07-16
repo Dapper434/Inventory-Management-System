@@ -25,6 +25,17 @@ function App() {
   }, [])
 
 
+  // handle the form submission for adding items
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    // build the item object
+    const newItem = {
+      name,
+      price: parseFloat(price),
+      stock: parseInt(stock)
+    }
+
 
 
 
