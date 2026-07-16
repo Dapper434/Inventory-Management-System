@@ -29,3 +29,12 @@ def fetch_openfoodfacts_data(product_name):
 def get_all_items():
     # return the whole list
     return jsonify(inventory), 200
+
+app.route('/inventory/<int:item_id>', methods=['GET'])
+def get_item(item_id):
+    # loop through inventory to find the specific item
+    for item in inventory:
+        if item.get("id") == item_id:
+            return jsonify(item), 200
+    
+    return jsonify({"error": "Not found"}), 404
