@@ -23,3 +23,9 @@ def fetch_openfoodfacts_data(product_name):
     except Exception:
         pass
     return None
+
+
+@app.route('/inventory', methods=['GET'])
+def get_all_items():
+    # return the whole list
+    return jsonify(inventory), 200
