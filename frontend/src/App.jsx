@@ -72,9 +72,9 @@ function App() {
     } catch (error) {
       console.error(error)
     }
+  }
 
-
-    return (
+  return (
       <div className="container">
         <h1>Inventory Management System</h1>
         
@@ -104,30 +104,24 @@ function App() {
           <button type="submit">Add Item</button>
         </form>
   
-        <div className="inventory-list">
-          {inventory.map(item => (
-            <div key={item.id} className="item-card">
-              <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>Price: ${item.price}</p>
-                <p>Stock: {item.stock}</p>
-                {item.brands && <p>Brand: {item.brands}</p>}
-                {item.ingredients_text && <p>Ingredients: {item.ingredients_text}</p>}
-              </div>
-              <button className="delete-btn" onClick={() => handleDelete(item.id)}>Delete</button>
+       
+      <div className="inventory-list">
+        {inventory.map(item => (
+          <div key={item.id} className="item-card">
+            <div className="item-details">
+              <h3>{item.name}</h3>
+              <p>Price: ${item.price}</p>
+              <p>Stock: {item.stock}</p>
+              {item.brands && <p>Brand: {item.brands}</p>}
+              {item.ingredients_text && <p>Ingredients: {item.ingredients_text}</p>}
             </div>
-          ))}
-        </div>
+            <button className="delete-btn" onClick={() => handleDelete(item.id)}>Delete</button>
+          </div>
+        ))}
       </div>
-    )
-  }
-  
-  export default App
-  
-
-
-
-
-
+    </div>
+  )
 
 }
+
+export default App
