@@ -80,6 +80,7 @@ def update_item(item_id):
             
     return jsonify({"error": "Not found"}), 404
 
+
 @app.route('/inventory/<int:item_id>', methods=['DELETE'])
 def delete_item(item_id):
     global inventory
@@ -93,4 +94,5 @@ def delete_item(item_id):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
  
