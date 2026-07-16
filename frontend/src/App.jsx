@@ -37,7 +37,27 @@ function App() {
     }
 
 
-
+    try {
+      // send the new item to our flask backend
+      await fetch('http://localhost:5000/inventory', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+      })
+      
+      // clear the form after saving
+      setName('')
+      setPrice('')
+      setStock('')
+      
+      // refresh the list to show the new item
+      fetchInventory()
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
 
