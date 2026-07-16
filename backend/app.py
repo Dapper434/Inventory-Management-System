@@ -51,3 +51,13 @@ def add_item():
         "price": data.get("price"),
         "stock": data.get("stock")
     }    
+
+     # check if we can autofill details depending on product name
+    product_data = fetch_openfoodfacts_data(data.get("name", ""))
+    if product_data:
+        new_item["brands"] = product_data.get("brands", "")
+        new_item["ingredients_text"] = product_data.get("ingredients_text", "")
+
+    # save item
+    inventory.append(new_item)
+    return jsonify(new_item), 201
