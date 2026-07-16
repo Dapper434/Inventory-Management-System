@@ -60,6 +60,17 @@ function App() {
   }
 
 
+  // delete an item by its id
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/inventory/${id}`, {
+        method: 'DELETE'
+      })
+      // refresh the list to remove it from the screen
+      fetchInventory()
+    } catch (error) {
+      console.error(error)
+    }
 
 
 
